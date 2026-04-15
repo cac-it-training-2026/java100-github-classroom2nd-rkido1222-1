@@ -61,7 +61,14 @@ public class Explorer {
 
 
 		//ここにdo～while文、if文を利用した処理を記述
-
+		
+		do {
+			System.out.println("隊長:");
+			lithograph=(int) (Math.random() * 10 % 3) + 1;
+			
+			
+		}while();
+		
 
 		if (lithograph == 3) {
 			System.out.println("洞窟の入り口が開きました。");
