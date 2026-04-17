@@ -48,13 +48,15 @@ public class Explorer {
 
 		//ここにfor文を記述する。
 
+		for (int hito = 1; hito < 6; hito++) {
+
 			System.out.print("応募する人の名前を入れてください＞");
 
 			String name = br.readLine();
 			System.out.println("\n隊長：");
 			System.out.println(name + "さん合格！\n");
 
-		//ここに  } を記述する。
+		}
 
 		System.out.println("定員に達しました。募集を締め切ります。");
 
