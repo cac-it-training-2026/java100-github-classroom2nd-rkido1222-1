@@ -54,12 +54,45 @@ public class WarehouseManager {
 		int[] ABKosanArray1 = new int[5];
 		int[] ABKosanArray2 = new int[5];
 
-
 		//ここに重複チェックおよび値の代入処理を記述する①(1～5)
+		int intputNum = 0;
+		boolean loopFlag = false;
+		//ここに重複チェックおよび値の代入処理を記述する
 
+		for (int i = 0; i < 5; i++) {
+			do {
+				loopFlag = false;
+				intputNum = (int) (Math.random() * 10) % 5 + 1;
+
+				for (int j = 0; j < 5; j++) {
+					if (ABKosanArray1[j] == intputNum) {
+						loopFlag = true;
+						break;
+					}
+				}
+
+			} while (loopFlag);
+
+			ABKosanArray1[i] = intputNum;
+		}
 
 		//ここに重複チェックおよび値の代入処理を記述する②(6～10)
+		for (int i = 0; i < 5; i++) {
+			do {
+				loopFlag = false;
+				intputNum = (int) (Math.random() * 10) % 5 + 6;
 
+				for (int j = 0; j < 5; j++) {
+					if (ABKosanArray2[j] == intputNum) {
+						loopFlag = true;
+						break;
+					}
+				}
+
+			} while (loopFlag);
+
+			ABKosanArray2[i] = intputNum;
+		}
 
 		System.out.println("E主任：");
 		System.out.println("AB興産から新たに預かった荷物と以前から預かっている荷物の");
@@ -88,11 +121,51 @@ public class WarehouseManager {
 		System.out.println("E主任：");
 		System.out.println("その二つの荷物を奇数群、偶数群で入れ替えてください。\n");
 
-
-
 		//ここに奇数群(ABKosanArray1)と偶数群(ABKosanArray2)に振り分ける処理を記述する。
 
+		int odd = 0;
+		int even = 0;
+		int j = 0;
+		int k = 0;
 
+		int odd2 = 0;
+		int even2 = 0;
+
+		int[] ABKosansum = new int[10];
+
+		for (int i = 0; i < 5; i++) {
+			ABKosansum[i] = ABKosanArray1[i];
+
+		}
+		for (int i = 5; i < 10; i++) {
+			ABKosansum[i] = ABKosanArray2[i - 5];
+		}
+
+		for (int i = 0; i < 10; i++) {
+			System.out.println(ABKosansum[i]);
+		}
+
+		for (int i = 0; i < 5; i++) {
+			if (ABKosansum[i] % 2 == 1) {
+				ABKosanArray1[j] = ABKosansum[i];
+				j++;
+			} else {
+				ABKosanArray2[k] = ABKosansum[i];
+				k++;
+			}
+
+		}
+
+		for (int i = 5; i < 10; i++) {
+			if (ABKosansum[i] % 2 == 1) {
+				ABKosanArray1[j] = ABKosansum[i];
+				j++;
+			} else {
+				ABKosanArray2[k] = ABKosansum[i];
+				k++;
+			}
+
+		}
 
 		System.out.println("Yさん：");
 		System.out.println("はい、入れ替えました。");
