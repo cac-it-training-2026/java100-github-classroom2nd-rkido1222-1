@@ -69,7 +69,7 @@ class ClearRobot {
 
 class Robot {
 	int energy;
-	int water;
+	private int water;
 	String name;
 
 	void pumpWater() {

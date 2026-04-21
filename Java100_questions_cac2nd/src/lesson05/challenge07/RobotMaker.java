@@ -33,7 +33,7 @@ package lesson05.challenge07;
 
 class Robot {
 	int energy;
-	int water;
+	private int water;
 	String name;
 
 	void pumpWater() {

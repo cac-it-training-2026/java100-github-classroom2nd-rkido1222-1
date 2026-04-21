@@ -64,7 +64,7 @@ import java.io.InputStreamReader;
 //戻り値String、作成できるメニューを戻り値として返す。また、作成できるメニューが無い場合はnull値を返す)
 class Robot {
 	int energy;
-	int water;
+	private int water;
 	String name;
 
 	void pumpWater() {
