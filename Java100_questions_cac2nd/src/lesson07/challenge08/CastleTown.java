@@ -34,48 +34,83 @@ package lesson07.challenge08;
 
 class Samurai {
 
-    protected String name;
+	protected String name;
 
-    void fight() {
-        System.out.println("戦うよ～。");
-    }
+	void fight() {
+		System.out.println("戦うよ～。");
+	}
 
-    void work() {
-        System.out.println("何かして働くよ～");
-    }
+	void work() {
+		System.out.println("何かして働くよ～");
+	}
 
 }
 
-
 //ここにRetainerクラスを記述
+class Retainer extends Samurai {
+	protected String domain;
 
+	public Retainer(String domain, String name) {
+		this.name = name;
+		this.domain = domain;
+
+	}
+
+	void getpaid() {
+		System.out.println("給料をもらうよ～。");
+	}
+
+	public String toString() {
+		String rename = "拙者は" + domain + "、" + name + "ともうす。";
+
+		return rename;
+	}
+
+	public boolean equals(Object object) {
+		Retainer retainer = (Retainer) object;
+		if (this.domain.equals(retainer.domain)) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+}
 
 public class CastleTown {
 
-    public static void main(String[] args) {
-        System.out.println("○△□藩の藩士を二つ作ります。\n");
+	public static void main(String[] args) {
+		System.out.println("○△□藩の藩士を二つ作ります。\n");
 
+		Retainer retainer1 = new Retainer("○△□藩士", "テスト太郎");
+		System.out.println(retainer1);
 
-        //ここに適切な処理を記述
+		Retainer retainer2 = new Retainer("○△□藩士", "テスト次郎");
+		System.out.println(retainer2);
 
+		System.out.println("\n同じ藩に所属しているか確認します。\n");
 
-        System.out.println("\n同じ藩に所属しているか確認します。\n");
+		boolean match = retainer1.equals(retainer2);
 
+		if (match) {
+			System.out.println("同じ藩に所属しています");
+		} else {
+			System.out.println("同じ藩に所属していません");
+		}
 
-        //ここに適切な処理を記述
+		System.out.println("\n○△×藩の藩士を一つ作ります。\n");
 
+		Retainer retainer3 = new Retainer("○△×藩士", "テスト三郎");
+		System.out.println(retainer2);
 
-        System.out.println("\n○△×藩の藩士を一つ作ります。\n");
+		System.out.println("\n同じ藩に所属しているか確認します。\n");
+		boolean match2 = retainer1.equals(retainer3);
 
+		if (match2) {
+			System.out.println("同じ藩に所属しています");
+		} else {
+			System.out.println("同じ藩に所属していません");
+		}
 
-        //ここに適切な処理を記述
-
-
-        System.out.println("\n同じ藩に所属しているか確認します。\n");
-
-
-        //ここに適切な処理を記述
-
-
-    }
+	}
 }

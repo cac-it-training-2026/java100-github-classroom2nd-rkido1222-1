@@ -98,10 +98,30 @@ public class WarehouseManager {
 		}
 
 		System.out.println("\n\nでした。直してきます...\n");
-
+		int zero = 0;
 
 		//ここに適切な値の挿入処理を記述する
+		for (int i = 0; i < wonderfulArray.length; i++) {
+			if (wonderfulArray[i] == 0) {
+				zero = i;
+			}
+		}
 
+		for (int i = 1; i < 6; i++) {
+			boolean use = false;
+
+			for (int j = 0; j < wonderfulArray.length; j++) {
+				if (i == wonderfulArray[j]) {
+					use = true;
+					break;
+				}
+			}
+
+			if (use == false) {
+				wonderfulArray[zero] = i;
+			}
+
+		}
 
 		System.out.println("Yさん：");
 		System.out.println("直してきました。\n");

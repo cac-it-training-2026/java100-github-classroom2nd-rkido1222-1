@@ -61,12 +61,38 @@ public class WarehouseManager {
 
 	public static void main(String[] args) {
 
-
 		//ここに必要な配列の宣言を記述する。
-
+		int[] konC = new int[5];
+		int[] konD = new int[5];
+		int[] konE = new int[5];
 
 		//ここに配列に値を代入する処理を記述する。(要素はランダム)
+		for (int i = 0; i < 5; i++) {
+			int hantei = (int) (Math.random() * 10) % 4;
+			konC[i] = (int) (Math.random() * 10 % 10) + 1;
 
+			if (hantei == 0) {
+				konC[i] = 0;
+			}
+		}
+
+		for (int i = 0; i < 5; i++) {
+			int hantei = (int) (Math.random() * 10) % 4;
+			konD[i] = (int) (Math.random() * 10 % 10) + 1;
+
+			if (hantei == 0) {
+				konD[i] = 0;
+			}
+		}
+
+		for (int i = 0; i < 5; i++) {
+			int hantei = (int) (Math.random() * 10) % 4;
+			konE[i] = (int) (Math.random() * 10 % 10) + 1;
+
+			if (hantei == 0) {
+				konE[i] = 0;
+			}
+		}
 
 		System.out.println("E主任：");
 		System.out.println("MQ運送から預かった荷物の確認をお願いします。\n");
@@ -76,21 +102,37 @@ public class WarehouseManager {
 
 		System.out.print("C...");
 
-
 		//ここに配列Cの要素をすべて出力する処理を記述する。
-
+		for (int i = 0; i < 5; i++) {
+			if (i == 4) {
+				System.out.print(konC[i]);
+			} else {
+				System.out.print(konC[i] + ",");
+			}
+		}
 
 		System.out.print("\n\nD...");
 
-
 		//ここに配列Dの要素をすべて出力する処理を記述する。
-
+		for (int i = 0; i < konD.length; i++) {
+			if (i == 4) {
+				System.out.print(konD[i]);
+			} else {
+				System.out.print(konD[i] + ",");
+			}
+		}
 
 		System.out.print("\n\nE...");
 
-
 		//ここに配列Eの要素をすべて出力する処理を記述する。
+		for (int i = 0; i < konE.length; i++) {
+			if (i == 4) {
+				System.out.print(konE[i]);
+			} else {
+				System.out.print(konE[i] + ",");
+			}
 
+		}
 
 		System.out.println("\n\nです。\n");
 
