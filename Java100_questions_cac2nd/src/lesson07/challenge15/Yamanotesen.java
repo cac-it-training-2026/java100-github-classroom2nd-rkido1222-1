@@ -66,7 +66,6 @@ public class Yamanotesen {
 			hitFlag = false;// フラグをリセットしておく
 
 		} while (gameCount != stations.length);// 駅がすべて出るまで続ける
-
 		// 駅が全部出たらプレイヤーの勝ち,それ以外は負け
 		if (gameCount == stations.length) {
 			System.out.println("あなたの勝ちです！");
