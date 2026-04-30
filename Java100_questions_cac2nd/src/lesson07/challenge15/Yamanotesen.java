@@ -9,7 +9,7 @@ import java.util.Random;
 public class Yamanotesen {
 
 	public static void main(String[] args) throws IOException {
-		// TODO 自動生成されたメソッド・スタブ
+		//駅名を配列に
 		String[] stations = { "品川", "大崎", "五反田", "目黒",
 				"恵比寿", "渋谷", "原宿", "代々木", "新宿", "新大久保", "高田馬場",
 				"目白", "池袋", "大塚", "巣鴨", "駒込", "田端", "西日暮里", "日暮里",
@@ -19,18 +19,19 @@ public class Yamanotesen {
 		System.out.println("※※※ 山手線ゲーム ※※※\n");
 		System.out.println("       ゲームスタート！");
 
+		//駅が出ているかどうかを管理する配列
 		boolean[] stationFlag = new boolean[stations.length];
-		Arrays.fill(stationFlag, true);
+		Arrays.fill(stationFlag, true);//全部先にまだ出ていないにする。
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-		Random rand = new Random();// 元々使えるrandomというクラスで初期化
-		boolean hitFlag = false;// 正解した時にtrueとなるフラグ
-		int gameCount = 0;// ゲームの実行回数（プレイヤーとコンピュータがそれぞれ回答する度にプラス１）
+		Random rand = new Random();// コンピュータがランダムに駅を選ぶための Random
+		boolean hitFlag = false;// 正解した時の判定フラグ
+		int gameCount = 0;//両者が答えた合計
 
 		do {
 			String inputStationName = br.readLine();// プレイヤーに駅名を入力してもらう
-			for (int i = 0; i < stations.length; i++) {// プレイヤーの入力した駅名がOKかどうかを判定するための繰り返し（駅の総数まで繰り返す）
+			for (int i = 0; i < stations.length; i++) {// 入力した駅名がOKかどうかを判定するための繰り返し
 				if (stations[i].equals(inputStationName)) {// プレイヤーの入力した駅名が配列に含まれていれば
 					if (stationFlag[i]) {// / その番号の駅が既出でないか判定する
 						hitFlag = true;// 正解したという目印にフラグを立てる
@@ -43,30 +44,30 @@ public class Yamanotesen {
 					}
 				}
 			}
-			gameCount++;// ゲームの実行回数を一つ増やす
+			gameCount++;// プレイヤーが答えたから+1
 
-			if (!hitFlag || (gameCount == stations.length)) {// プレイヤーが誤答した場合または全ての駅名が出尽くした場合
+			if (!hitFlag || (gameCount == stations.length)) {// プレイヤーが誤答した場合orもう全駅出た場合
 
-				break;// 外側のループを抜けて終了処理へ
+				break;
 			}
 
-			hitFlag = false;// フラグをクリアしておく
-			while (!hitFlag) {// コンピュータが回答するための繰り返し（正解するまで繰り返す）
-				int num = rand.nextInt(stations.length);// 総駅数の範囲で乱数を取得
+			hitFlag = false;// フラグをリセットしておく
+			while (!hitFlag) {// コンピュータが回答するための繰り返し
+				int num = rand.nextInt(stations.length);// 駅の数の範囲でランダムな番号を作成
 
-				if (stationFlag[num]) {// その番号の駅が既出でないか判定する
-					System.out.println(stations[num]);// 既出でなければ駅名を出力する
-					stationFlag[num] = false;// この駅名はもう答えましたという意味でfalseに変えておく
-					hitFlag = true;// 正解したという目印にフラグを立てる
+				if (stationFlag[num]) {// まだ出ていない駅なら採用
+					System.out.println(stations[num]);// 駅名を出力する
+					stationFlag[num] = false;// 出たことにする
+					hitFlag = true;// 正解した
 				}
 			}
 
-			gameCount++;// ゲームの実行回数を一つ増やす
-			hitFlag = false;// フラグをクリアしておく
+			gameCount++;// コンピューターも答えたので＋１
+			hitFlag = false;// フラグをリセットしておく
 
-		} while (gameCount != stations.length);// 駅名が出尽くした場合ループを抜ける
+		} while (gameCount != stations.length);// 駅がすべて出るまで続ける
 
-		// 駅名が出尽くしていればプレイヤーの勝ち、そうでなければ負け
+		// 駅が全部出たらプレイヤーの勝ち,それ以外は負け
 		if (gameCount == stations.length) {
 			System.out.println("あなたの勝ちです！");
 		} else {
