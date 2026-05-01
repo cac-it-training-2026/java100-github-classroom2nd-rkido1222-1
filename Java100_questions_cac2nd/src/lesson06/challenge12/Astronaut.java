@@ -32,30 +32,72 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-
 //ここにOmegalianクラスを記述する
+class Omegalian {
+	private String item;
 
+	/**
+	 * @return item
+	 */
+	public String getItem() {
+		return item;
+	}
+
+	/**
+	 * @param item セットする item
+	 */
+	public void setItem(String item) {
+		int last = item.length() - 1;
+		char lastnum = item.charAt(last);
+		String change = changeLastChar(lastnum);
+
+		if (change != null) {
+			StringBuffer buf = new StringBuffer(item);
+			buf.replace(last, last + 1, change);
+			this.item = new String(buf);
+		} else {
+			this.item = item;
+		}
+	}
+
+	private String changeLastChar(char ch) {
+		String henk;
+		henk = String.valueOf(ch);
+
+		henk = henk.replace("0", "zero")
+				.replace("1", "one")
+				.replace("2", "two")
+				.replace("3", "three")
+				.replace("4", "four")
+				.replace("5", "five")
+				.replace("6", "six")
+				.replace("7", "seven")
+				.replace("8", "eight")
+				.replace("9", "nine");
+
+		return henk;
+	}
+
+}
 
 public class Astronaut {
 
-    public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException {
 
-        System.out.print("Ω星人にアイテムを渡してください＞");
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String present = br.readLine();
+		System.out.print("Ω星人にアイテムを渡してください＞");
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String present = br.readLine();
 
+		//ここに適切な処理を記述する
+		Omegalian omegalian = new Omegalian();
+		omegalian.setItem(present);
 
-        //ここに適切な処理を記述する
+		String item = null;
+		item = omegalian.getItem();
+		//ここに適切な処理を記述する
 
-
-        String item = null;
-
-
-        //ここに適切な処理を記述する
-
-
-        System.out.println("\nΩ星人：");
-        System.out.println("えっ！" + item + "をくれるオメガか！");
-        System.out.println("ありがとうオメガ。");
-    }
+		System.out.println("\nΩ星人：");
+		System.out.println("えっ！" + item + "をくれるオメガか！");
+		System.out.println("ありがとうオメガ。");
+	}
 }

@@ -63,32 +63,45 @@ public class WarehouseManager {
 
 	public static void main(String[] args) throws IOException {
 
-
 		//配列の宣言および初期化処理を記述する
-
+		String[] aisa = new String[3];
+		aisa[0] = "へい！らっしゃい！！";
+		aisa[1] = "何にしますか！今日は活きのいいコハダが入ってますよ";
+		aisa[2] = "まいどあり！！またどうぞ";
 
 		System.out.println("Yさん：");
 		System.out.println("まず、MISAKI○の今の状態を確かめようかな。\n");
 
-
 		//三つのあいさつパターンの出力処理を記述する
-
+		for (int i = 0; i < aisa.length; i++) {
+			System.out.println("あいさつパターン" + (i + 1) + "...「" + aisa[i] + "」\n");
+		}
 
 		System.out.println("Yさん：");
 		System.out.println("うわぁ～。どれか変更しよう。\n");
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-
 		//入力処理および入力値の代入処理
+		System.out.print("どのパターンを変更しますか＞");
+		String str = br.readLine();
+		int heko = Integer.parseInt(str);
 
+		aisa[heko - 1] = null;
+
+		System.out.print("\nあいさつを吹き込んでください＞");
+		String arata = br.readLine();
+
+		aisa[heko - 1] = arata;
 
 		System.out.println("\nYさん：");
 		System.out.println("よし。もう一度確かめてみよう。\n");
 
-
 		//三つのあいさつパターンの出力処理を記述する
 
+		for (int i = 0; i < aisa.length; i++) {
+			System.out.println("あいさつパターン" + (i + 1) + "...「" + aisa[i] + "」\n");
+		}
 
 		System.out.println("Yさん：");
 		System.out.println("まあ少しはマシになったかな。");
