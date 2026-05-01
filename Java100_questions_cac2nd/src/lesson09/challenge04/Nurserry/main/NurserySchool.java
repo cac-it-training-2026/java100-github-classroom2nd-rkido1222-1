@@ -59,7 +59,7 @@ public class NurserySchool {
 			nurse3.takeTemperature(child3);
 
 		} catch (CriticalConditionException e) {
-
+			return;
 		}
 
 	}
